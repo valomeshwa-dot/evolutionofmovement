@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-eom-green: #2BA84A;
+  --color-eom-blue: #1F3C88;
+  --color-eom-light: #F5F7FA;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
