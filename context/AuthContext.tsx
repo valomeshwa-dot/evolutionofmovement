@@ -16,21 +16,63 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const getSession = async () => {
-      const { data } = await supabase.auth.getSession()
-      setUser(data.session?.user || null)
-      setLoading(false)
+    let mounted = true
+
+    // 1. FORCE CLEAN SESSION ON APP LOAD
+    const clearInvalidSession = async () => {
+      try {
+        // 5. IMPORTANT: DO NOT USE OLD SESSION DATA - fetch fresh session
+        const { data, error } = await supabase.auth.getSession()
+
+        if (!data.session || error) {
+          await supabase.auth.signOut()
+          localStorage.clear()
+          sessionStorage.clear()
+          if (mounted) setUser(null)
+        } else {
+          if (mounted) setUser(data.session.user)
+        }
+      } catch (error: any) {
+        // 4. HANDLE REFRESH TOKEN ERROR SAFELY
+        console.error(error)
+
+        if (
+          error?.message?.includes("Refresh Token") ||
+          error?.message?.includes("Invalid")
+        ) {
+          await supabase.auth.signOut()
+          localStorage.clear()
+          sessionStorage.clear()
+          
+          // Stop infinite loop: only redirect if not already home
+          if (window.location.pathname !== "/") {
+            window.location.href = "/" // Fallback to home since /login does not exist
+          }
+        }
+        if (mounted) setUser(null)
+      } finally {
+        if (mounted) setLoading(false)
+      }
     }
 
-    getSession()
+    clearInvalidSession()
 
+    // 2. HANDLE AUTH STATE PROPERLY
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user || null)
+      (event, session) => {
+        // Prevent infinite loop by not force-redirecting guests on public pages
+        if (!session && window.location.pathname.startsWith("/profile")) {
+          window.location.href = "/" // Redirect to home
+        }
+        
+        if (mounted) {
+          setUser(session?.user || null)
+        }
       }
     )
 
     return () => {
+      mounted = false
       listener.subscription.unsubscribe()
     }
   }, [])

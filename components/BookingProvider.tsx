@@ -84,6 +84,11 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
     } else {
       const res = await supabase.auth.signInWithPassword({ email: authEmail, password });
       error = res.error;
+      
+      // FORCE CLEAN LOGIN FLOW
+      if (!error) {
+        await supabase.auth.getSession();
+      }
     }
 
     setAuthLoading(false);

@@ -4,11 +4,8 @@ import { useEffect, useState } from "react"
 import { createClient } from "@supabase/supabase-js"
 import { useAuth } from "@/context/AuthContext"
 
-// DIRECT CLIENT INITIALIZATION
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// DIRECT CLIENT INITIALIZATION REMOVED - using global client instead
+import { supabase } from "@/lib/supabaseClient"
 
 interface Booking {
   id: string
@@ -25,26 +22,53 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchBookings = async () => {
+      // 3. PREVENT DASHBOARD LOAD WITH INVALID SESSION
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+
+      if (!session || sessionError) {
+        await supabase.auth.signOut();
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "/";
+        return;
+      }
+
       if (!user) return;
 
       console.log("USER:", user);
 
-      const { data, error } = await supabase
-        .from("bookings")
-        .select("*")
-        .eq("email", user.email)
-        .order("created_at", { ascending: false });
+      try {
+        const { data, error } = await supabase
+          .from("bookings")
+          .select("*")
+          .eq("email", user.email)
+          .order("created_at", { ascending: false });
 
-      console.log("BOOKINGS:", data);
+        if (error) throw error;
 
-      if (data) {
-        setBookings(data);
+        console.log("BOOKINGS:", data);
+
+        if (data) {
+          setBookings(data);
+        }
+      } catch (error: any) {
+        console.error("Error fetching bookings:", error);
+        
+        // 4. HANDLE REFRESH TOKEN ERROR SAFELY
+        if (
+          error?.message?.includes("Refresh Token") ||
+          error?.message?.includes("Invalid") ||
+          error?.message?.includes("JWT")
+        ) {
+          await supabase.auth.signOut();
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.href = "/";
+        }
       }
     };
 
-    if (user) {
-      fetchBookings();
-    }
+    fetchBookings();
   }, [user]);
 
   if (loading) {

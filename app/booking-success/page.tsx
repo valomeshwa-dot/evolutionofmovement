@@ -34,9 +34,18 @@ export default function BookingSuccess() {
           Booking Confirmed
         </h1>
 
-        <p className="text-lg text-gray-600 mb-8 leading-relaxed font-medium">
-          Your session is confirmed. We look forward to helping you move better and get stronger.
+        <p className="text-lg text-gray-600 mb-6 leading-relaxed font-medium">
+          Your session has been successfully booked. Our team will contact you shortly to confirm your appointment.
         </p>
+
+        <div className="flex flex-col gap-3 items-center mb-8 text-sm font-bold text-gray-700">
+          <div className="flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full border border-green-100">
+            <CheckCircle2 size={16} /> Booking Confirmed
+          </div>
+          <div className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-100">
+            <CheckCircle2 size={16} /> No payment required now
+          </div>
+        </div>
 
         <div className="bg-eom-blue/5 rounded-3xl p-6 mb-10 text-sm text-eom-blue/80 font-semibold leading-relaxed border border-eom-blue/10">
           Please arrive 5–10 minutes early for your session. <br />

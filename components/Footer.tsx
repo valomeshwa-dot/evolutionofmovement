@@ -26,8 +26,16 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="bg-eom-blue text-white pt-24 pb-12 border-t border-white/5">
+      <div className="bg-eom-blue text-white pt-16 pb-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Trust Line */}
+        <div className="text-center mb-16 pb-12 border-b border-white/10">
+          <p className="text-lg md:text-xl font-bold tracking-tight text-gray-300">
+            Trusted by athletes, working professionals, and recovery-focused individuals across Mumbai.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
           {/* Brand */}
           <div className="space-y-8">
@@ -88,7 +96,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-gray-500" />
-                <a href="tel:+919820289337" className="text-gray-300 hover:text-eom-green transition-colors text-sm font-bold uppercase tracking-widest">+91 98202 89337</a>
+                <a href="tel:+919820289337" className="text-gray-300 hover:text-eom-green transition-colors text-sm font-bold tracking-wider">+91 98202 89337</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-gray-500" />
@@ -103,7 +111,6 @@ export function Footer() {
           <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
           </div>
         </div>
         </div>
