@@ -15,13 +15,13 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <p className="text-white text-lg md:text-xl font-bold tracking-tight">
             Ready to get started?{" "}
-            <button 
-              onClick={openModal}
+            <Link 
+              href="/contact#consultation-form"
               className="text-eom-green hover:text-white transition-all duration-300 relative group inline-block"
             >
-              Book your session today.
+              Book your first consultation.
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-eom-green group-hover:bg-white transition-colors"></span>
-            </button>
+            </Link>
           </p>
         </div>
       </div>
@@ -71,7 +71,7 @@ export function Footer() {
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Philosophy</Link></li>
               <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Services</Link></li>
               <li><Link href="/trainers" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Expert Team</Link></li>
-              <li><Link href="/contact#booking-form" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Book Session</Link></li>
+              <li><Link href="/contact#consultation-form" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Book Your First Consultation</Link></li>
             </ul>
           </div>
 

@@ -2,16 +2,10 @@
 
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, ArrowRight, Home, MessageSquare } from 'lucide-react';
+import { CheckCircle2, Home, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 
 export default function BookingSuccess() {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.location.href = "/profile";
-    }, 8000); // Redirect after 8 seconds to give user time to read
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] px-4 font-sans">
@@ -40,10 +34,7 @@ export default function BookingSuccess() {
 
         <div className="flex flex-col gap-3 items-center mb-8 text-sm font-bold text-gray-700">
           <div className="flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full border border-green-100">
-            <CheckCircle2 size={16} /> Booking Confirmed
-          </div>
-          <div className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-100">
-            <CheckCircle2 size={16} /> No payment required now
+            <CheckCircle2 size={16} /> Booking Request Received
           </div>
         </div>
 
@@ -52,14 +43,7 @@ export default function BookingSuccess() {
           For any changes, contact us via WhatsApp or email.
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Link
-            href="/profile"
-            className="flex items-center justify-center gap-2 px-8 py-4 bg-eom-blue text-white rounded-2xl font-bold hover:bg-eom-blue/90 transition-all shadow-lg active:scale-[0.98] uppercase tracking-widest text-xs"
-          >
-            Dashboard <ArrowRight size={16} />
-          </Link>
-
+        <div className="flex justify-center">
           <Link
             href="/"
             className="flex items-center justify-center gap-2 px-8 py-4 bg-white border border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-50 transition-all active:scale-[0.98] uppercase tracking-widest text-xs"
@@ -80,9 +64,6 @@ export default function BookingSuccess() {
           </div>
         </div>
 
-        <p className="mt-8 text-[9px] text-gray-400 font-medium">
-          Auto-redirecting to dashboard in a few seconds...
-        </p>
       </motion.div>
     </div>
   );

@@ -69,11 +69,11 @@ export default function TermsAndConditions() {
           <hr className="border-slate-100" />
 
           <section>
-            <h3 className="text-xl font-bold text-slate-900 mb-4">4. Bookings & Payments</h3>
-            <p className="mb-2">All appointments must be booked in advance through our official channels.</p>
-            <p className="mb-2">Payments may be required in full or partial (advance) to confirm bookings.</p>
-            <p className="mb-2">We accept payments via cash, UPI, bank transfer, Card or other approved methods.</p>
-            <p>Prices are subject to change without prior notice.</p>
+            <h3 className="text-xl font-bold text-slate-900 mb-4">4. Bookings & Consultations</h3>
+            <p className="mb-2">All sessions must be booked in advance through our official booking form or direct contact.</p>
+            <p className="mb-2">Appointments are subject to availability and confirmation by the EOM team.</p>
+            <p className="mb-2">Fees for sessions will be handled directly at the studio upon arrival.</p>
+            <p>Session rates are subject to change without prior notice.</p>
           </section>
 
           <hr className="border-slate-100" />

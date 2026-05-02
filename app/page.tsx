@@ -48,8 +48,8 @@ export default function Home() {
               Personalised physiotherapy and performance training designed around your body, your data, and your goals.
             </p>
             <div className="flex flex-wrap gap-4 mt-0">
-              <Link href="/contact#booking-form" className="bg-eom-blue text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-eom-green transition-all shadow-xl hover:shadow-2xl flex items-center gap-2 group">
-                Book Session <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-2 w-max">
+                Book Your Consultation <ArrowRight size={20} />
               </Link>
               <a href="https://wa.me/919820289337" target="_blank" rel="noopener noreferrer" className="bg-white text-eom-blue border-2 border-gray-100 px-10 py-5 rounded-full font-bold text-lg hover:border-eom-green hover:text-eom-green transition-all flex items-center gap-2 shadow-sm">
                 <PhoneCall size={20} /> WhatsApp Now
@@ -253,9 +253,9 @@ export default function Home() {
             <h2 className="text-4xl lg:text-6xl font-bold font-heading mb-6 text-eom-blue tracking-tighter leading-tight uppercase">Your body can perform better. <br/>Start today.</h2>
             <p className="text-lg text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">Stop living with pain or hitting plateaus. Let our experts build the right path for your success.</p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-               <button onClick={openModal} className="bg-eom-blue text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-eom-green transition-all shadow-2xl hover:shadow-eom-green/20 hover:-translate-y-1">
-                Book My Assessment
-              </button>
+               <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest flex items-center justify-center">
+                Book Your First Consultation
+              </Link>
               <a href="tel:+919820289337" className="bg-white text-eom-blue border-2 border-gray-100 px-10 py-5 rounded-full font-bold text-lg hover:border-eom-green hover:text-eom-green transition-all flex items-center gap-3">
                 <PhoneCall size={20} /> Call the Studio
               </a>

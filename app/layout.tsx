@@ -5,7 +5,6 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingProvider } from '@/components/BookingProvider';
-import { AuthProvider } from "@/context/AuthContext"
 
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -22,8 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} scroll-smooth`}>
       <body className="bg-[#FAFAFA] text-gray-900 font-sans antialiased flex flex-col min-h-screen" suppressHydrationWarning>
-        <AuthProvider>
-          <BookingProvider>
+        <BookingProvider>
             <div className="min-h-screen flex flex-col">
               <Header />
               <main className="flex-1 pt-24">
@@ -33,7 +31,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </div>
             <WhatsAppButton />
           </BookingProvider>
-        </AuthProvider>
       </body>
     </html>
   );

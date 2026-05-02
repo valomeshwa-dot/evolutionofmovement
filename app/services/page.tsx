@@ -128,8 +128,8 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/contact" className="inline-flex bg-eom-green text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-emerald-600 transition-all shadow-2xl hover:scale-105 transform duration-200">
-              Book My Assessment
+            <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2">
+              Book Your First Consultation
             </Link>
           </motion.div>
         </div>
@@ -171,8 +171,8 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="pt-6">
-                     <Link href={`/contact?service=${service.id}`} className="inline-flex items-center justify-center gap-4 bg-eom-green text-white px-8 py-4 rounded-full font-bold hover:bg-eom-blue transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 transform duration-200 text-lg group">
-                      Book This Session <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                     <Link href={`/contact?service=${service.id}#consultation-form`} className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2 group">
+                      Book Your First Consultation <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                      </Link>
                   </div>
                 </div>
@@ -201,8 +201,8 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center space-y-10">
            <h2 className="text-4xl lg:text-6xl font-bold font-heading text-eom-blue tracking-tighter uppercase leading-tight">Ready to reclaim <br/>your movement?</h2>
            <p className="text-lg lg:text-xl text-gray-500 max-w-2xl mx-auto font-medium">Join the evolution and start your journey towards peak physical performance today.</p>
-           <Link href="/contact" className="inline-flex items-center justify-center bg-eom-blue text-white px-10 py-5 rounded-full text-lg font-bold hover:bg-eom-green transition-all shadow-2xl hover:-translate-y-2">
-            Get My Custom Plan
+           <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2">
+            Book Your First Consultation
            </Link>
         </div>
       </section>

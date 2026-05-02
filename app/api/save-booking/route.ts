@@ -19,13 +19,11 @@ export async function POST(req: Request) {
       .from("bookings")
       .insert([
         {
-          user_id: body.user_id || null,
           name: body.name,
           email: body.email.toLowerCase().trim(),
           phone: body.phone,
           service: body.service,
-          status: "confirmed",
-          payment_status: "paid",
+          status: "pending",
         },
       ])
       .select();

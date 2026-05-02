@@ -53,8 +53,8 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-4"
           >
-            <Link href="/contact" className="inline-flex bg-eom-green text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-emerald-600 transition-all shadow-2xl hover:scale-105 transform duration-200">
-              Book Appointment
+            <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2">
+              Book Your First Consultation
             </Link>
           </motion.div>
         </div>
@@ -229,8 +229,8 @@ export default function AboutPage() {
               <div className="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--color-eom-green)_0%,_transparent_100%)]"></div>
               <div className="relative z-10 space-y-8">
                 <h2 className="text-4xl lg:text-6xl font-bold font-heading text-white tracking-tighter leading-tight uppercase">Start Your Movement <br className="hidden md:block" /> Journey Today</h2>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-4 bg-eom-green text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-white hover:text-eom-green transition-all shadow-2xl hover:-translate-y-1 transform duration-200">
-                    Book Your First Session <ArrowRight size={24} />
+                <Link href="/contact#consultation-form" className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-12 py-6 rounded-full text-lg lg:text-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-4 group">
+                    Book Your First Consultation <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
            </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, MapPin, Phone, Award, Target, CheckCircle2, Navigation, MessageSquare, Loader2, ShieldCheck, X, Lock, Clock, Star } from 'lucide-react';
+import { Mail, MapPin, Phone, Award, Target, CheckCircle2, Navigation, MessageSquare, Loader2, ShieldCheck, X, Lock, Clock, Star, ArrowRight } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
@@ -73,7 +73,7 @@ function ContactContent() {
           >
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-eom-green/10 text-eom-green font-bold text-[10px] uppercase tracking-widest border border-eom-green/20">
-                <ShieldCheck size={14} /> Secure Booking
+                <ShieldCheck size={14} /> Expert Care
               </div>
               <h1 className="text-5xl lg:text-7xl font-extrabold font-heading text-eom-blue leading-[1.05] tracking-tight uppercase">Book Your Session at EOM</h1>
               <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl font-medium">Start your journey towards better movement, recovery, and performance with expert guidance.</p>
@@ -150,7 +150,7 @@ function ContactContent() {
 
           {/* Contact Form */}
           <motion.div 
-            id="booking-form"
+            id="consultation-form"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -256,20 +256,17 @@ function ContactContent() {
                   type="button"
                   onClick={handleBooking}
                   disabled={loading || !isAgreed}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed uppercase tracking-widest flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed uppercase tracking-widest flex items-center justify-center gap-3"
                 >
                   {loading ? (
                     <>
                       <Loader2 size={20} className="animate-spin" /> Processing...
                     </>
-                  ) : "Confirm Booking"}
+                  ) : "Book Your Consultation"}
                 </button>
                 <div className="mt-5 flex flex-col items-center gap-3">
                   <p className="text-[10px] font-bold text-gray-400 flex items-center justify-center gap-2 uppercase tracking-tight">
-                    <CheckCircle2 size={16} className="text-eom-green" /> Typically responds within 1–2 hours.
-                  </p>
-                  <p className="text-[10px] font-bold text-gray-500 flex items-center gap-1.5 bg-gray-50 px-4 py-2 rounded-full border border-gray-100 uppercase tracking-widest">
-                    <CheckCircle2 size={14} className="text-eom-green" /> Payment will be handled at the studio
+                    <CheckCircle2 size={16} className="text-eom-green" /> Consultation scheduled on arrival.
                   </p>
                 </div>
               </div>
@@ -403,12 +400,12 @@ function ContactContent() {
           <h2 className="text-4xl lg:text-5xl font-extrabold font-heading text-eom-blue uppercase tracking-tighter">Start Your Recovery Journey Today</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium">Work with certified experts focused on real results, not shortcuts.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-            <button 
-              onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-              className="w-full sm:w-auto bg-eom-green text-white px-10 py-5 rounded-full text-base font-bold hover:bg-emerald-600 transition-all duration-300 shadow-xl hover:-translate-y-1 hover:shadow-2xl uppercase tracking-widest"
+            <Link 
+              href="#consultation-form" 
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2 group"
             >
-              Book Your First Session →
-            </button>
+              Book Your First Consultation <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
             <a 
               href="tel:+919820289337"
               className="w-full sm:w-auto bg-white text-eom-blue border-2 border-eom-blue px-10 py-5 rounded-full text-base font-bold hover:bg-eom-blue hover:text-white transition-all duration-300 uppercase tracking-widest"

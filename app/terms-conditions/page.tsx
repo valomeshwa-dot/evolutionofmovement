@@ -58,7 +58,7 @@ export default function TermsConditions() {
               "Clients must provide accurate health and fitness information",
               "EOM is not liable for injuries arising from undisclosed conditions",
               "Programs are personalised and results may vary",
-              "Payments once made are subject to our refund policy"
+              "Cancellations must be made at least 12 hours in advance"
             ].map((term, idx) => (
               <div 
                 key={idx} 

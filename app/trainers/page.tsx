@@ -276,10 +276,10 @@ export default function TrainersPage() {
           </p>
           <div className="pt-4">
             <Link 
-              href="/contact" 
-              className="inline-flex items-center justify-center px-10 py-5 bg-blue-600 text-white font-bold text-lg rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest"
+              href="/contact#consultation-form" 
+              className="bg-gradient-to-r from-blue-600 to-[#1F3C88] text-white px-10 py-5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest inline-flex items-center justify-center gap-2"
             >
-              Book Your Session
+              Book Your First Consultation
             </Link>
           </div>
         </div>
