@@ -29,7 +29,7 @@ export default function BookingSuccess() {
         </h1>
 
         <p className="text-lg text-gray-600 mb-6 leading-relaxed font-medium">
-          Your session has been successfully booked. Our team will contact you shortly to confirm your appointment.
+          Your consultation request has been received. We will contact you shortly.
         </p>
 
         <div className="flex flex-col gap-3 items-center mb-8 text-sm font-bold text-gray-700">

@@ -6,38 +6,72 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("BODY RECEIVED:", body);
+    console.log("Incoming Request:", body);
 
-    // Initialize with service role for database access
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    const { name, email, phone, service } = body;
 
-    // Get the user ID from the body if provided, or fallback to email lookup
+    // Validate request body
+    if (!name || !email || !phone || !service) {
+      return NextResponse.json(
+        { error: "Missing required fields: name, email, phone, and service are required." },
+        { status: 400 }
+      );
+    }
+
+    // Initialize Supabase Client
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error("Supabase environment variables are missing.");
+      return NextResponse.json(
+        { error: "Internal Server Error: Database configuration is missing." },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    // Insert into "bookings" table with ONLY specified fields
+    // Ensure status defaults to "pending"
+    // No user_id or payment_status required
     const { data, error } = await supabase
       .from("bookings")
       .insert([
         {
-          name: body.name,
-          email: body.email.toLowerCase().trim(),
-          phone: body.phone,
-          service: body.service,
-          status: "pending",
+          name: name.trim(),
+          email: email.toLowerCase().trim(),
+          phone: phone.trim(),
+          service: service,
+          status: "pending"
         },
       ])
       .select();
 
     if (error) {
-      console.error("INSERT ERROR:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      console.error("SUPABASE ERROR:", JSON.stringify(error, null, 2));
+      return NextResponse.json(
+        { 
+          error: `Supabase Error: ${error.message}`,
+          details: error 
+        },
+        { status: 500 }
+      );
     }
 
-    console.log("INSERT SUCCESS:", data);
+    console.log("Success Response:", data);
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ 
+      success: true, 
+      message: "Booking saved successfully",
+      data 
+    }, { status: 200 });
+
   } catch (err: any) {
-    console.error("SAVE ERROR:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("Unexpected API Error:", err);
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again.", details: err.message },
+      { status: 500 }
+    );
   }
 }

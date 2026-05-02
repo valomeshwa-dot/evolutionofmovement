@@ -40,19 +40,32 @@ function ContactContent() {
       const res = await fetch('/api/save-booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service
+        }),
       });
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message);
+      if (!res.ok) {
+        // Handle API errors properly: show alert with real error message
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
 
-      // Redirect to success page as previously requested
+      // Log success response
+      console.log("Booking saved successfully:", data);
+
+      // Redirect to success page
       window.location.href = "/booking-success";
       
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Try again.");
+    } catch (err: any) {
+      console.error("Booking Error:", err);
+      // Fallback error handling
+      const errorMessage = err.message || "Something went wrong. Please try again.";
+      alert(errorMessage);
     } finally {
       setLoading(false);
     }
