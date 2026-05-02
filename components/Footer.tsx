@@ -1,22 +1,27 @@
+'use client';
+
 import Link from 'next/link';
 import { Activity, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import { useBookingModal } from './BookingProvider';
 
 export function Footer() {
+  const { openModal } = useBookingModal();
+
   return (
     <footer className="w-full mt-auto">
       {/* CTA Strip */}
       <div className="bg-eom-blue border-b border-white/5 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <p className="text-white text-lg md:text-xl font-bold tracking-tight">
             Ready to get started?{" "}
-            <Link 
-              href="/contact" 
+            <button 
+              onClick={openModal}
               className="text-eom-green hover:text-white transition-all duration-300 relative group inline-block"
             >
               Book your session today.
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-eom-green group-hover:bg-white transition-colors"></span>
-            </Link>
+            </button>
           </p>
         </div>
       </div>
@@ -58,7 +63,7 @@ export function Footer() {
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Philosophy</Link></li>
               <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Services</Link></li>
               <li><Link href="/trainers" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Expert Team</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Book Session</Link></li>
+              <li><Link href="/contact#booking-form" className="text-gray-400 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Book Session</Link></li>
             </ul>
           </div>
 
@@ -95,11 +100,10 @@ export function Footer() {
 
         <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em]">© {new Date().getFullYear()} Evolution of Movement Studio.</p>
-          <div className="flex gap-8 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
             <Link href="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
-            <Link href="/consent-form" className="hover:text-white transition-colors">Consent Form</Link>
           </div>
         </div>
         </div>

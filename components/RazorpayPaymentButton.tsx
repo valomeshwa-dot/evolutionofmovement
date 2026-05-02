@@ -30,21 +30,21 @@ export function RazorpayPaymentButton({
     setIsProcessing(true);
 
     const options = {
-      key: "rzp_test_SgbolHMqpfC3L7",
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount: 50000, 
       currency: "INR",
-      name: "Clinic Name",
-      description: "Consultation Fee",
+      name: "EOM Fitness",
+      description: "Session Booking",
       handler: function (response: any) {
         setIsProcessing(false);
-        console.log("Payment ID:", response.razorpay_payment_id);
-        window.location.href = "/booking-success";
+
+        // window.location.href = "/booking-success";
         if (onSuccess) onSuccess(response);
       },
       prefill: {
-        name: "Test User",
-        email: "test@test.com",
-        contact: "9999999999",
+        name: "",
+        email: "",
+        contact: "",
       },
       theme: {
         color: "#10b981", 
@@ -60,8 +60,8 @@ export function RazorpayPaymentButton({
       const rzp = new (window as any).Razorpay(options);
       rzp.open();
     } catch (err) {
-      console.error("Razorpay failed to load:", err);
-      alert("Payment gateway failed to load.");
+
+      alert("Error: Payment gateway failed to load.");
       setIsProcessing(false);
     }
   };
