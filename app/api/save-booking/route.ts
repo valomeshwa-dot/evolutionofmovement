@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
     const { name, email, phone, service } = body;
 
-    // Validate request body
+    // Validate request body properly
     if (!name || !email || !phone || !service) {
       return NextResponse.json(
         { error: "Missing required fields: name, email, phone, and service are required." },
@@ -32,9 +32,8 @@ export async function POST(req: Request) {
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-    // Insert into "bookings" table with ONLY specified fields
-    // Ensure status defaults to "pending"
-    // No user_id or payment_status required
+    // Insert into "bookings" table with ONLY guaranteed fields
+    // Removed: status, created_at, user_id, payment_status
     const { data, error } = await supabase
       .from("bookings")
       .insert([
@@ -42,8 +41,7 @@ export async function POST(req: Request) {
           name: name.trim(),
           email: email.toLowerCase().trim(),
           phone: phone.trim(),
-          service: service,
-          status: "pending"
+          service: service
         },
       ])
       .select();
@@ -51,10 +49,7 @@ export async function POST(req: Request) {
     if (error) {
       console.error("SUPABASE ERROR:", JSON.stringify(error, null, 2));
       return NextResponse.json(
-        { 
-          error: `Supabase Error: ${error.message}`,
-          details: error 
-        },
+        { error: error.message },
         { status: 500 }
       );
     }
@@ -70,7 +65,7 @@ export async function POST(req: Request) {
   } catch (err: any) {
     console.error("Unexpected API Error:", err);
     return NextResponse.json(
-      { error: "Something went wrong. Please try again.", details: err.message },
+      { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
   }
